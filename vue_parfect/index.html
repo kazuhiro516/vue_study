@@ -4,18 +4,40 @@
   <input type="text" v-model="message">
   <p>{{message}}</p>
   <button v-on:click="reverseMessage">メッセージの反転</button>
+
+  <h1 :class="classObject">こんにちは</h1>
+  <button @click="isActive = !isActive">切り替え</button>
 </div>
 
 <script>
   new Vue({
     el: '#app',
     data: {
-      message: 'Hello World!'
+      message: 'Hello World!',
+      isActive: true
     },
     methods: {
       reverseMessage: function() {
         this.message = this.message.split('').reverse().join('')
       }
+    },
+    computed: {
+      classObject: function() {
+        return {
+          red: this.isActive,
+          'bg-blue': !this.isActive
+        }
+      }
     }
   })
 </script>
+
+<style>
+  .red{
+    color: red;
+  }
+
+  .bg-blue{
+    background-color: royalblue;
+  }
+</style>
