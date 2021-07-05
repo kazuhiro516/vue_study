@@ -9,14 +9,18 @@
 </head>
 <body>
   <div id="app">
-    <p v-if="ok">OK</p>
+    <template v-if="ok">
+      <p v-if="ok">OK</p>
+      <p v-else>Not.OK!</p>
+    </template>
+    <button @click="ok = !ok">ボタン</button>
   </div>
 
   <script>
     new Vue({
       el: '#app',
       data: {
-        ok: false,
+        ok: true,
       }
     })
   </script>
